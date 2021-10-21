@@ -8,6 +8,7 @@ public class MyLinkList {
 		this.head = null;
 		this.tail = null;
 	}
+
 	public void add(INode newNode) {
 		if (this.tail == null) {
 			this.tail = newNode;
@@ -20,6 +21,7 @@ public class MyLinkList {
 			this.head.setNext(tempNode);
 		}
 	}
+
 	public void append(INode myNode) {
 		if (this.head == null) {
 			this.head = myNode;
@@ -31,10 +33,23 @@ public class MyLinkList {
 			this.tail = myNode;
 		}
 	}
-	public void insert(INode myNode, INode newNode) {
-		INode tempNode = myNode.getNext();
-		myNode.setNext(newNode);
-		newNode.setNext(tempNode);
+
+	public INode pop() {
+		INode tempNode = this.head;
+		this.head = head.getNext();
+		return tempNode;
 	}
 
+	public void printMyNode() {
+		StringBuffer myNode = new StringBuffer("My Nodes: ");
+		INode temNode = head;
+		while (tempNode.getNext() != null) {
+			myNode.append(temNode.getkey());
+			if (!tempNode.equals(tail))
+				myNode.append("->");
+			tempNode = tempNode.getNext();
+		}
+		myNode.append(tempNode.getNext());
+		System.out.println(myNode);
+	}
 }
